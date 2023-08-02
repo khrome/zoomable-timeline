@@ -1,19 +1,19 @@
 {
-    "name": "@environment-safe/template",
-    "version": "0.0.2",
+    "name": "zoomable-timeline",
+    "version": "0.0.1",
     "main": "dist/index.cjs",
     "module": "src/index.mjs",
-    "homepage": "https://github.com/environment-safe/template",
-    "description": "A template for buildless module development",
+    "homepage": "https://github.com/khrome/zoomable-timeline",
+    "description": "A web component that supports timelines which can be zoomed in from a simple JSON format",
     "keywords": [],
-    "author": "Abbey Hawk Sparrow <@khrome> (http://patternweaver.com)",
+    "author": "Abbey Hawk Sparrow <khrome>(http://abbeyhawksparrow.com)",
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "git@github.com:environment-safe/template.git"
+        "url": "https://github.com/khrome/zoomable-timeline"
     },
     "bugs": {
-        "url": "https://github.com/environment-safe/template/issues"
+        "url": "https://api.github.com/repos/khrome/zoomable-timeline/issues"
     },
     "moka": {
         "firefox": {
@@ -68,10 +68,10 @@
         "build-commonjs": "./node_modules/@environment-safe/commonjs-builder/bin/build.mjs",
         "local-server": "open 'http://localhost:8085/' ; npx http-server -p 8085",
         "headless-browser-test": "npm run headless-chrome-test; npm run headless-firefox-test; npm run headless-safari-test",
-        "headless-chrome-test": "./bin/moka.mjs --server . --browser chrome --relaxed --prefix ../ test/test.mjs",
-        "headless-firefox-test": "./bin/moka.mjs --server . --browser firefox --relaxed --prefix ../ test/test.mjs",
-        "headless-safari-test": "./bin/moka.mjs --server . --browser safari --relaxed --prefix ../ test/test.mjs",
-        "browser-test": "./bin/moka.mjs --server . --local-browser --relaxed --prefix ../ test/test.mjs",
+        "headless-chrome-test": "moka --server . --browser chrome --relaxed --prefix ../ test/test.mjs",
+        "headless-firefox-test": "moka --server . --browser firefox --relaxed --prefix ../ test/test.mjs",
+        "headless-safari-test": "moka --server . --browser safari --relaxed --prefix ../ test/test.mjs",
+        "browser-test": "moka --server . --local-browser --relaxed --prefix ../ test/test.mjs",
         "container-test": "docker build . -t environment-safe-package.json -f ./containers/test.dockerfile; docker logs --follow \"$(docker run -d environment-safe-package.json)\"",
         "build-docs": "build-jsdoc docs",
         "build-types": "build-jsdoc types",
