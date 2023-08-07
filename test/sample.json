@@ -1,0 +1,86 @@
+[
+    {
+        "start" : "02-01-2012 00:00:00",
+        "end" : "02-01-2013 00:00:00",
+        "content" : "Foo",
+        "className" : "companies"
+    },
+    {
+        "start" : "02-01-2011 00:00:00",
+        "end" : "01-31-2012 00:00:00",
+        "content" : "Bar",
+        "className" : "companies"
+    },
+    {
+        "start" : "10-01-2013 00:00:00",
+        "end" : "08-01-2014 00:00:00",
+        "content" : "Baz",
+        "className" : "companies"
+    },
+    {
+        "start" : "04-01-2007 00:00:00",
+        "end" : "01-31-2011 00:00:00",
+        "content" : "Foobar",
+        "className" : "companies"
+    },
+    {
+        "start" : "06-01-2005 00:00:00",
+        "end" : "04-31-2008 00:00:00",
+        "content" : "Qux",
+        "className" : "companies"
+    },
+    {
+        "start" : "10-01-2003 00:00:00",
+        "end" : "06-31-2005 00:00:00",
+        "content" : "Quux",
+        "className" : "companies"
+    },
+    {
+        "start" : "04-01-2000 00:00:00",
+        "end" : "10-31-2002 00:00:00",
+        "content" : "Corge",
+        "className" : "companies"
+    },
+    {
+        "start" : "02-02-2007 00:00:00",
+        "end" : "02-02-2013 00:00:00",
+        "content" : "Grault",
+        "className" : "companies"
+    },
+    {
+        "start" : "05-02-2021 00:00:00",
+        "end" : "{{now}}",
+        "content" : "Garply",
+        "className" : "companies"
+    },
+    {
+        "start" : "09-16-2005 00:00:00",
+        "end" : "{{now}}",
+        "content" : "Waldo",
+        "className" : "software"
+    },
+    {
+        "start" : "06-02-2016 00:00:00",
+        "end" : "10-01-2017 00:00:00",
+        "content" : "Fred",
+        "className" : "companies"
+    },
+    {
+        "start" : "08-01-2014 00:00:00",
+        "end" : "06-01-2016 00:00:00",
+        "content" : "Plugh",
+        "className" : "companies"
+    },
+    {
+        "start" : "06-01-2016 00:00:00",
+        "end" : "04-02-2021 00:00:00",
+        "content" : "Xyzzy",
+        "className" : "companies"
+    },
+    {
+        "start" : "04-03-2018 00:00:00",
+        "end" : "04-03-2021 00:00:00",
+        "content" : "Thud",
+        "className" : "companies"
+    }
+]

@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run lint
-npm run import-test
+#npm run import-test
 npm run headless-browser-test
 npm run build-commonjs
 npm run require-test

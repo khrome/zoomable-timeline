@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <title>Timeline Demo</title>
+        <link id="timeline.css" rel="stylesheet" href="../timeline.css">
+        <link id="animate.css" href="../node_modules/animate.css/animate.css" rel="stylesheet">
+        <script type="importmap"> { "imports": {
+            "zoomable-timeline": "../src/index.mjs",
+            "browser-or-node": "../node_modules/browser-or-node/src/index.js",
+            "@environment-safe/elements": "../node_modules/@environment-safe/elements/src/index.mjs"
+        } }</script>
+        <script src="/timeline.js"></script>
+        <style>
+            .timeline{
+                position: absolute;
+                display: block;
+                bottom: 0px;
+                width: 100%;
+            }
+            body{
+                margin: 0px;
+                padding: 0px;
+            }
+            #inspector{
+                position: absolute;
+                display: block;
+                top: 0px;
+                width: 200px;
+                height: 200px;
+                margin: 40px;
+                padding: 10px;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="module">
+            import { ZoomableTimeline, TimelineCard } from '../src/index.mjs';
+        </script>
+        <timeline-card id="inspector" class="timeline">
+            <div>Just a test.</div>
+        </timeline-card>
+        <zoomable-timeline 
+            id="timeline" 
+            class="timeline" 
+            card="inspector"
+        ></zoomable-timeline>
+        <script type="module">
+            const timeline = document.getElementById('timeline');
+            const inspector = document.getElementById('inspector');
+            timeline.addEventListener('timeline-select', (e)=>{
+                console.log('SELECT', e);
+                inspector.setContent(
+                    ' A <b>new</b> contender has arrived: '+e.detail.content
+                );
+            });
+            timeline.setAttribute('src', '/test/sample.json');
+        </script>
+
+    </body>
+</html>
