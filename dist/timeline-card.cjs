@@ -11,7 +11,7 @@ class TimelineCard extends _elements.HTMLElement {
     this.attachShadow({
       mode: 'open'
     });
-    const link = document.querySelector('#animate.css');
+    const link = document.getElementById('animate.css');
     const animateCSSLink = link ? link.getAttribute('href') : '/node_modules/animate.css/animate.css';
     this._link = document.createElement('link');
     this._link.setAttribute('rel', 'stylesheet');

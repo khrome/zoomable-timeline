@@ -14,7 +14,7 @@ class ZoomableTimeline extends _elements.HTMLElement {
     this.attachShadow({
       mode: 'open'
     });
-    const link = document.querySelector('#timeline.css');
+    const link = document.getElementById('timeline.css');
     const animateCSSLink = link ? link.getAttribute('href') : '/timeline.css';
     this._link = document.createElement('link');
     this._link.setAttribute('rel', 'stylesheet');
