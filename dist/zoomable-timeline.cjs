@@ -78,7 +78,7 @@ class ZoomableTimeline extends _elements.HTMLElement {
 
   // Getter and setters for src
   get src() {
-    return this._data;
+    return this._src;
   }
   set src(uri) {
     this._src = uri;

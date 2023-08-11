@@ -13,9 +13,15 @@ class TimelineCard extends _elements.HTMLElement {
     });
     const link = document.getElementById('animate.css');
     const animateCSSLink = link ? link.getAttribute('href') : '/node_modules/animate.css/animate.css';
+    this._animateLink = document.createElement('link');
+    this._animateLink.setAttribute('rel', 'stylesheet');
+    this._animateLink.setAttribute('href', animateCSSLink);
+    this.shadowRoot.appendChild(this._animateLink);
+    const timelink = document.getElementById('timeline.css');
+    const timelineCSSLink = timelink ? timelink.getAttribute('href') : '/timeline.css';
     this._link = document.createElement('link');
     this._link.setAttribute('rel', 'stylesheet');
-    this._link.setAttribute('href', animateCSSLink);
+    this._link.setAttribute('href', timelineCSSLink);
     this.shadowRoot.appendChild(this._link);
     this._container = document.createElement('div');
     this._container.innerHTML = '<slot></slot>';

@@ -65,7 +65,7 @@ export class ZoomableTimeline extends HTMLElement {
     }
     
     // Getter and setters for src
-    get src() { return this._data; }
+    get src() { return this._src; }
     set src(uri){
         this._src = uri;
         (async ()=>{
