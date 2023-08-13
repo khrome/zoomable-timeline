@@ -11,10 +11,14 @@ export class ZoomableTimeline extends HTMLElement {
         this._link = document.createElement('link');
         this._link.setAttribute('rel', 'stylesheet');
         this._link.setAttribute('href', animateCSSLink);
-        this.shadowRoot.appendChild(this._link);
         this._container = document.createElement('div');
-        this.shadowRoot.appendChild(this._container);
+        //*
+        this.shadowRoot.appendChild(this._link);
+        this.shadowRoot.appendChild(this._container); //*/
         this._timeline = new links.Timeline(this._container);
+        /*
+        this.appendChild(this._link);
+        this.appendChild(this._container); //*/
         links.events.addListener( this._timeline, 'rangechanged', function(properties){
             //document.getElementById('info').innerHTML += 'rangechanged ' +
             //        properties.start + ' - ' + properties.end + '<br>';
@@ -23,9 +27,6 @@ export class ZoomableTimeline extends HTMLElement {
         this.height = this.getAttribute('height') || (this._container.offsetHeight+'px');
         window.addEventListener('resize', ()=>{
             if(this.width && this.height){
-                console.log('ser', this.width, this.height);
-                //this gives percentages a chance to adjust
-                //this.setDimensions(this.width, this.height);
                 this._timeline.setSize();
             }
         });
@@ -76,36 +77,40 @@ export class ZoomableTimeline extends HTMLElement {
     }
     
     render(){
-        //normalize
-        let min;
-        let max;
-        (this._data).forEach((item, index)=>{
-            Object.keys(item).forEach((key)=>{
-                if(item[key] && item[key].match){
-                    var matches = item[key].match(/^(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2}):(\d{2})$/);
-                    if(matches) this._data[index][key] = new Date(matches[3], matches[1], matches[2], matches[4], matches[5], matches[6]);
-                    if(item[key] == '{{now}}') this._data[index][key] = new Date();
-                    if(this._data[index][key] < min || !min) min = this._data[index][key];
-                    if(this._data[index][key] > max || !max) max = this._data[index][key];
+        try{
+            //normalize
+            let min;
+            let max;
+            const data = JSON.parse(JSON.stringify(this._data));
+            (data).forEach((item, index)=>{
+                Object.keys(item).forEach((key)=>{
+                    if(item[key] && item[key].match){
+                        var matches = item[key].match(/^(\d{2})-(\d{2})-(\d{4}) (\d{2}):(\d{2}):(\d{2})$/);
+                        if(matches) data[index][key] = new Date(matches[3], matches[1], matches[2], matches[4], matches[5], matches[6]);
+                        if(item[key] == '{{now}}') data[index][key] = new Date();
+                        if(data[index][key] < min || !min) min = data[index][key];
+                        if(data[index][key] > max || !max) max = data[index][key];
+                    }
+                });
+            });
+            if(data.length) this._timeline.draw(data, {
+                'width':  '100%',
+                'height': '300px',
+                'editable': false,
+                'style': 'box',
+                min : min,
+                max : max,
+                onSelect : (text)=>{
+                    const item = (this._data ||[]).find((item)=>{
+                        return item.content === text;
+                    });
+                    var event = new CustomEvent('timeline-select', { detail: item });
+                    this.dispatchEvent(event);
                 }
             });
-        });
-        this._timeline.draw(this._data, {
-            'width':  '100%',
-            'height': '300px',
-            'editable': false,
-            'style': 'box',
-            min : min,
-            max : max,
-            onSelect : (text)=>{
-                const item = (this._data ||[]).find((item)=>{
-                    return item.content === text;
-                });
-                var event = new CustomEvent('timeline-select', { detail: item });
-                this.dispatchEvent(event);
-            }
-        });
-        //
+        }catch(ex){
+            console.log(ex);
+        }
     }
     
     display(){
